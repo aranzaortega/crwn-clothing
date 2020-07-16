@@ -22,12 +22,16 @@ class SignUp extends React.Component {
         const {displayName, email, password, confirmPassword} = this.state;
 
         if(password !== confirmPassword){
-            alert("Passwords dont match");
+            alert("Passwords don't match");
             return;
         }
 
         try {
-            const { user }= await auth.createUserWithEmailAndPassword(email, password);
+            const { user } = await auth.createUserWithEmailAndPassword(
+                email, 
+                password
+            );
+
             await createUserProfileDocument(user, {displayName});
             
             //to clear our form
@@ -43,9 +47,9 @@ class SignUp extends React.Component {
     };
 
     handleChange = event => {
-        const {name, value } = event.target;
+        const { name, value } = event.target;
 
-        this.setState({[name]: value});
+        this.setState({ [name]: value });
     }
 
     render(){
@@ -64,7 +68,7 @@ class SignUp extends React.Component {
                         required
                     />
                     <FormInput
-                        type='text'
+                        type='email'
                         name='email'
                         value={email}
                         onChange={this.handleChange}
@@ -87,7 +91,7 @@ class SignUp extends React.Component {
                         label='Confirm Password'
                         required
                     />
-                    <CustomButton type="submit" value="Submit form">
+                    <CustomButton type='submit' value='Submit form'>
                         Sign up
                     </CustomButton>
                 </form>
