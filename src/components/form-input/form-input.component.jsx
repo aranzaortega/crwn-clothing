@@ -2,7 +2,7 @@ import React from 'react';
 import './form-input.styles.scss';
 
 const FormInput = ({handleChange, label, ...otherProps}) => (
-    <div className="group">
+    <div className='group'>
         <input className='form-input' onChange={handleChange} {...otherProps}/>
         {
             //Selectively render a label
@@ -16,6 +16,6 @@ const FormInput = ({handleChange, label, ...otherProps}) => (
             ) : null
         }
     </div>    
-)
+);
 
 export default FormInput;
